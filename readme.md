@@ -1,0 +1,1 @@
+Repository contains dirs and files with custom code only - copy them into directory with Magento installation.
