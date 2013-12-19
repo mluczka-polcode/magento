@@ -19,7 +19,7 @@ class Mage_Catalog_Block_Product_Bestseller extends Mage_Catalog_Block_Product_A
 //         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
 //         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
 
-        //$products->setPageSize(6)->setCurPage(1);
+//         $products->setPageSize(6)->setCurPage(1);
 
         $this->setProductCollection($products);
     }

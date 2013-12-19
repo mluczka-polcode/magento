@@ -40,6 +40,7 @@ $(document).ready(function() {
                 </a>
                 <h3 class="slider-product-title"><?php echo $this->htmlEscape($_product->getName()) ?></h3>
                 <p class="box-slide-description"><?php echo $_product->getShortDescription(); ?></p>
+
                 <?php if($_product->getSpecialPrice()) : ?>
                     <p class="box-slide-price box-slide-price-discound">From <?php echo $_coreHelper->formatPrice($_product->getPrice()); ?></p>
                     <p class="box-slide-special-price">Special Price: <?php echo $_coreHelper->formatPrice($_product->getSpecialPrice()); ?></p>
@@ -48,10 +49,12 @@ $(document).ready(function() {
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
+
         <div class="clr"></div>
     </div>
+
 </div><!-- box-slide-offer -->
 
 <?php else: ?>
-no bestsellers found
+<p>no bestsellers found</p>
 <?php endif; ?>
