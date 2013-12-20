@@ -32,7 +32,7 @@ Default layout, loads most of the pages
 
     <default translate="label" module="page">
         <label>All Pages</label>
-        <block type="page/html" name="root" output="toHtml" template="page/3columns.phtml">
+        <block type="page/html" name="root" output="toHtml" template="page/1column.phtml">
 
             <block type="page/html_head" name="head" as="head">
                 <action method="addItem"><type>skin_js</type><script>js/jquery-1.6.1.min.js</script></action>
@@ -71,8 +71,8 @@ Default layout, loads most of the pages
                 <label>Left Column</label>
             </block>
 
-            <block type="core/messages" name="global_messages" as="global_messages"/>
-            <block type="core/messages" name="messages" as="messages"/>
+            <block type="core/customMessages" name="global_messages" as="global_messages"/>
+            <block type="core/customMessages" name="messages" as="messages"/>
 
             <block type="core/text_list" name="content" as="content" translate="label">
                 <label>Main Content Area</label>
@@ -88,6 +88,7 @@ Default layout, loads most of the pages
                     <action method="setElementClass"><value>bottom-container</value></action>
                 </block>
                 <block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml"/>
+                <block type="newsletter/subscribe" name="newsletter" template="newsletter/subscribe.phtml"/>
             </block>
 
             <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">

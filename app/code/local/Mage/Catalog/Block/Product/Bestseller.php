@@ -9,15 +9,13 @@ class Mage_Catalog_Block_Product_Bestseller extends Mage_Catalog_Block_Product_A
         $storeId = Mage::app()->getStore()->getId();
 
         $products = Mage::getResourceModel('reports/product_collection')
-//             ->addOrderedQty()
             ->addAttributeToSelect(array('name', 'price', 'special_price', 'small_image', 'short_description', 'description'))
-//             ->setStoreId($storeId)
-//             ->addStoreFilter($storeId)
-//             ->setOrder('ordered_qty', 'desc')
+            ->setStoreId($storeId)
+            ->addStoreFilter($storeId)
+            ->addAttributeToFilter('is_bestseller', '1')
             ;
 
-//         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
-//         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
 
 //         $products->setPageSize(6)->setCurPage(1);
 

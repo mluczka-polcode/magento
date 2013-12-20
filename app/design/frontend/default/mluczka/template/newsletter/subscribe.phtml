@@ -1,0 +1,19 @@
+<div id="newsletter-delivery">
+
+    <div id="newsletter">
+        <h3>Sign up for news and exclusive offers!</h3>
+        <form id="newsletter-input" action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+            <div class="form-newsletter">
+                <input type="text" name="email" value="" class="input-text" />
+                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><?php echo $this->__('Sign Up'); ?></button>
+            </div><!--newsletter-input-->
+        </form>
+    </div><!--newsletter-->
+
+    <div id="delivery">
+        <?php echo Mage::getModel('core/variable')->loadByCode('delivery-text')->getValue('html'); ?>
+    </div><!--delivery-->
+
+    <div class="clr"></div>
+
+</div><!--newsletter delivery-->
