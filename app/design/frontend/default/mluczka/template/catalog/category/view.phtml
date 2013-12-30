@@ -15,17 +15,28 @@
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }
 ?>
+
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <?php if($_imgUrl): ?>
     <?php echo $_imgHtml ?>
 <?php endif; ?>
 
-<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="category-description std">
-        <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-    </div>
-    <?php endif; ?>
+<div id="comecial-description">
+	<div id="comecial-description-left">
+		<h3>Wchich Duvet?</h3>
+		<p>Lorem ipsum delor et consecticit nonummy et salal.</p>
+		<a href="#">Find out more ›</a>
+	</div><!--comecial-description-left-->
+
+	<div id="comecial-description-right">
+		<h3>Wchich is Best?</h3>
+		<p>Lorem ipsum delor et consecticit nonummy et salal.</p>
+		<a href="#">Find out more ›</a>
+	</div><!--comecial-description-right-->
+
+    <div class="clr"></div>
+</div>
 
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
@@ -36,4 +47,10 @@
 
 <?php else: ?>
     <?php echo $this->getProductListHtml() ?>
+<?php endif; ?>
+
+<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+    <div id="products-category-bottom-description">
+        <p><?php echo nl2br($_helper->categoryAttribute($_category, $_description, 'description')); ?></p>
+    </div>
 <?php endif; ?>

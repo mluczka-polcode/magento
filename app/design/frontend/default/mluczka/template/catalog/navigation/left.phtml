@@ -5,30 +5,60 @@
  * @see Mage_Catalog_Block_Navigation
  */
 ?>
-<?php if (!Mage::registry('current_category')) return ?>
-<?php $_categories = $this->getCurrentChildCategories() ?>
-<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
-<?php if($_count): ?>
-<div class="block block-layered-nav">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Browse By') ?></span></strong>
-    </div>
-    <div class="block-content">
-        <dl id="narrow-by-list2">
-            <dt><?php echo $this->__('Category') ?></dt>
-            <dd>
-                <ol>
-                <?php foreach ($_categories as $_category): ?>
-                    <?php if($_category->getIsActive()): ?>
-                    <li>
-                        <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->escapeHtml($_category->getName()) ?></a> (<?php echo $_category->getProductCount() ?>)
-                    </li>
-                    <?php endif; ?>
-                <?php endforeach ?>
-                </ol>
-            </dd>
-        </dl>
-        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
-    </div>
-</div>
-<?php endif; ?>
+<div class="left-box">
+
+    <p class="left-box-title">Choose by:</p>
+
+    <div class="left-box-small">
+        <h3>Size</h3>
+        <ul>
+        <li><a href="#">Single (14)</a></li>
+        <li><a href="#">Double (14)</a></li>
+        <li><a href="#">Kingsize (14)</a></li>
+        <li><a href="#">Super Kingsize (14)</a></li>
+        <li><a href="#">Cot Bed (1)</a></li>
+        </ul>
+    </div><!--left-box-small-->
+
+    <div class="left-box-small">
+        <h3>Warmth</h3>
+        <ul>
+        <li><a href="#">Summer (cool, 3.0 or 4.5 Tog) (6)</a></li>
+        <li><a href="#">Autumn (warm, 9.0 or 10.5 Tog) (8)</a></li>
+        <li><a href="#">Winter (very warm, 13.5 Tog) (10)</a></li>
+        <li><a href="#">Four Seasons (cool, warm and very warm) (18)</a></li>
+        </ul>
+    </div><!--left-box-small-->
+
+    <div class="left-box-small">
+        <h3>Comfort</h3>
+        <ul>
+        <li><a href="#">Premium (6)</a></li>
+        <li><a href="#">Luxury (12)</a></li>
+        <li><a href="#">Standard (18)</a></li>
+        </ul>
+    </div><!--left-box-small-->
+
+    <div class="left-box-small">
+        <h3>Filling</h3>
+        <ul>
+        <li><a href="#">Natural (25)</a></li>
+        <li><a href="#">Non Allergenic (5)</a></li>
+        </ul>
+    </div><!--left-box-small-->
+
+    <div class="left-box-small">
+        <h3>Tog</h3>
+        <ul>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4.5</a></li>
+        <li><a href="#">4-7</a></li>
+        <li><a href="#">6-7</a></li>
+        <li><a href="#">9</a></li>
+        <li><a href="#">10.5</a></li>
+        <li><a href="#">13.5</a></li>
+        <li><a href="#">Four Seasons</a></li>
+        </ul>
+    </div><!--left-box-small-->
+
+</div><!--left-box-->
