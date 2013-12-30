@@ -129,15 +129,41 @@
         <div id="product-details">
 
             <ul id="product-details-menu">
-                <li id="product-details-menu-curent"><a href="#">We Say...</a></li>
-                <li><a href="#">Product Details</a></li>
-                <li><a href="#">Sizing Information</a></li>
-                <li id="product-details-menu-last"><a href="#">Delivery &amp; Returns</a></li>
+                <li mage-tab="1" class="product-details-menu-current"><a href="#">We Say...</a></li>
+                <li mage-tab="2"><a href="#">Product Details</a></li>
+                <li mage-tab="3"><a href="#">Sizing Information</a></li>
+                <li mage-tab="4" id="product-details-menu-last"><a href="#">Delivery &amp; Returns</a></li>
             </ul>
 
-            <div class="product-details-tab">
+            <div id="product-details-tab1" class="product-details-tab">
                 <?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?>
-            </div><!--product-details-tab-->
+            </div><!--product-details-tab1-->
+
+            <div id="product-details-tab2" class="product-details-tab">
+                tab 2
+            </div><!--product-details-tab2-->
+
+            <div id="product-details-tab3" class="product-details-tab">
+                tab 3
+            </div><!--product-details-tab3-->
+
+            <div id="product-details-tab4" class="product-details-tab">
+                tab 4
+            </div><!--product-details-tab4-->
+
+            <script type="text/javascript">
+                $('.product-details-tab').hide();
+                $('#product-details-tab-1').show();
+
+                $('#product-details-menu').children().click(function(){
+                    $('.product-details-menu-current').removeClass('product-details-menu-current');
+                    $(this).addClass('product-details-menu-current');
+
+                    var id = '#product-details-tab' + $(this).attr('mage-tab');
+                    $('.product-details-tab').hide();
+                    $(id).show();
+                });
+            </script>
 
             <div class="clr"></div>
 
