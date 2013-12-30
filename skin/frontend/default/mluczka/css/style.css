@@ -249,6 +249,7 @@ ul#nav a:hover, a#active {
 }
 /* - newsletter delivery - */
 #newsletter-delivery {
+    clear: both;
     margin: 29px 0 0 0;
     padding: 11px 17px 10px 17px;
     height: 54px;

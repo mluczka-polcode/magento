@@ -1,0 +1,44 @@
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+<div class="items">
+    <div class="item-count"><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></div>
+
+    <div class="item-sort">
+
+        <label><?php echo $this->__('Show') ?></label>
+        <select onchange="setLocation(this.value)">
+        <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+            <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                <?php echo $_limit ?>
+            </option>
+        <?php endforeach; ?>
+        </select> <?php echo $this->__('per page') ?>
+
+        <?php echo $this->getPagerHtml() ?>
+
+        <?php if( $this->isExpanded() ): ?>
+        <span class="sort-by">
+            <label><?php echo $this->__('Sort By') ?></label>
+            <select onchange="setLocation(this.value)">
+            <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                    <?php echo $this->__($_order) ?>
+                </option>
+            <?php endforeach; ?>
+            </select>
+        </span>
+        <?php endif; ?>
+
+        <span class="arrow"><?php echo $this->getCurrentDirection() == 'desc' ? '&darr;' : '&uarr;'; ?></span>
+
+    </div>
+
+    <div class="clr"></div>
+</div>
+<?php endif ?>
