@@ -5,60 +5,36 @@
  * @see Mage_Catalog_Block_Navigation
  */
 ?>
+<?php
+    $read = Mage::getSingleton("core/resource")->getConnection("core_read");
+    $select = $read->select()->from(array("a" => "eav_attribute"), array("attribute_code", "frontend_label"))
+            ->join(array("ao" => "eav_attribute_option"), "a.attribute_id = ao.attribute_id", array())
+            ->order("frontend_label");
+
+    $attributes = $read->fetchPairs($select);
+
+    $attributeOptions = array();
+    foreach($attributes as $key => $name)
+    {
+        $attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')->setCodeFilter($key)->getFirstItem();
+        $attributeOptions[$key] = $attributeInfo->getSource()->getAllOptions(false);
+
+    }
+//     echo "<pre>"; print_r($attributeOptions); echo "</pre>";
+?>
 <div class="left-box">
 
     <p class="left-box-title">Choose by:</p>
 
-    <div class="left-box-small">
-        <h3>Size</h3>
-        <ul>
-        <li><a href="#">Single (14)</a></li>
-        <li><a href="#">Double (14)</a></li>
-        <li><a href="#">Kingsize (14)</a></li>
-        <li><a href="#">Super Kingsize (14)</a></li>
-        <li><a href="#">Cot Bed (1)</a></li>
-        </ul>
-    </div><!--left-box-small-->
-
-    <div class="left-box-small">
-        <h3>Warmth</h3>
-        <ul>
-        <li><a href="#">Summer (cool, 3.0 or 4.5 Tog) (6)</a></li>
-        <li><a href="#">Autumn (warm, 9.0 or 10.5 Tog) (8)</a></li>
-        <li><a href="#">Winter (very warm, 13.5 Tog) (10)</a></li>
-        <li><a href="#">Four Seasons (cool, warm and very warm) (18)</a></li>
-        </ul>
-    </div><!--left-box-small-->
-
-    <div class="left-box-small">
-        <h3>Comfort</h3>
-        <ul>
-        <li><a href="#">Premium (6)</a></li>
-        <li><a href="#">Luxury (12)</a></li>
-        <li><a href="#">Standard (18)</a></li>
-        </ul>
-    </div><!--left-box-small-->
-
-    <div class="left-box-small">
-        <h3>Filling</h3>
-        <ul>
-        <li><a href="#">Natural (25)</a></li>
-        <li><a href="#">Non Allergenic (5)</a></li>
-        </ul>
-    </div><!--left-box-small-->
-
-    <div class="left-box-small">
-        <h3>Tog</h3>
-        <ul>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4.5</a></li>
-        <li><a href="#">4-7</a></li>
-        <li><a href="#">6-7</a></li>
-        <li><a href="#">9</a></li>
-        <li><a href="#">10.5</a></li>
-        <li><a href="#">13.5</a></li>
-        <li><a href="#">Four Seasons</a></li>
-        </ul>
-    </div><!--left-box-small-->
+    <?php foreach($attributeOptions as $key => $values) : ?>
+        <div class="left-box-small">
+            <h3><?php echo $attributes[$key]; ?></h3>
+            <ul>
+                <?php foreach($values as $value) : ?>
+                    <li><a href="<?php echo '...'; ?>"><?php echo $value['label']; ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div><!--left-box-small-->
+    <?php endforeach; ?>
 
 </div><!--left-box-->

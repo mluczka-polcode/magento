@@ -1,0 +1,28 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<div id="customers-help">
+
+    <div class="customers-reviews">
+        <h3><?php echo $this->__('Customers Review'); ?></h3>
+        <div class="customres-box">
+            <p class="customres-box-big">
+                <?php echo $this->__('Write Your Own Review about') . ' ' . $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+            </p>
+            <p class="customres-box-small"><?php echo $this->__('Only registered users can write reviews. Please log in or register'); ?></p>
+        </div>
+    </div><!--customers review-->
+
+    <div class="need-help">
+        <h3><?php echo $this->__('Need Help Deciding?'); ?></h3>
+        <ul>
+            <li><a href="#"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') . $this->__('Reviews'); ?></a></li>
+            <li><a href="#"><?php echo $this->__('Which Duvet do I choose?'); ?></a></li>
+            <li><a href="#"><?php echo $this->__('Continental Pillows'); ?></a></li>
+        </ul>
+    </div><!--need help-->
+
+</div><!--customer-help-->
+
+<div class="clr"></div>
