@@ -1,0 +1,39 @@
+<?php
+    $_product = $this->getProduct();
+
+    $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+    if($parentIds)
+    {
+        $_parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+
+        $attributeOptions = array();
+        $productAttributeOptions = $_parentProduct->getTypeInstance(true)->getConfigurableAttributesAsArray($_parentProduct);
+        foreach ($productAttributeOptions as $productAttribute)
+        {
+            foreach ($productAttribute['values'] as $attribute)
+            {
+                $attributeOptions[$productAttribute['label']][$attribute['value_index']] = $attribute['store_label'];
+            }
+        }
+    }
+?>
+<?php if($attributeOptions) : ?>
+    <?php foreach($attributeOptions as $key => $values) : ?>
+        <tr>
+            <td class="product-tab"><?php echo $key; ?></td>
+            <td class="product-select">
+                <?php
+                    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', $key);
+                    $currentValue = $_product->getData(strtolower($key));
+                ?>
+                <select>
+                    <?php foreach($values as $value => $label) : ?>
+                        <?php //$_product = Mage::getModel('catalog/product')->loadByAttribute($key, $value); ?>
+                        <?php $selected = $value == $currentValue ? 'selected="selected"' : ''; ?>
+                        <option value="<?php echo $value; ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -194,7 +194,10 @@ Product view
                 <block type="catalog/product_view" name="catalog.product.related" as="related" template="catalog/product/view/related.phtml"/>
                 <block type="catalog/product_view" name="product.info.details" as="details" template="catalog/product/view/details.phtml"/>
                 <block type="catalog/product_view" name="product.info.crosssell" as="crosssell" template="catalog/product/view/crosssell.phtml"/>
-                <block type="catalog/product_view" name="product.info.form" as="form" template="catalog/product/view/form.phtml"/>
+                <block type="catalog/product_view" name="product.info.form" as="form" template="catalog/product/view/form.phtml">
+                    <block type="catalog/product_view" name="product.info.attributes" as="attributes" template="catalog/product/view/attributes.phtml"/>
+                    <block type="catalog/product_view" name="product.info.extra" as="extra" template="catalog/product/view/extra.phtml"/>
+                </block>
 
                 <block type="core/text_list" name="alert.urls" as="alert_urls" translate="label">
                     <label>Alert Urls</label>

@@ -6,17 +6,17 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	try {
-    	var oHandlerHorizontal = $("#carouseldiv").msCarousel({boxClass:'div.set', width:907, height:302, scrollSpeed:500}).data("msCarousel");
-    	$("#next").click(function() {
-    		oHandlerHorizontal.next();
-    	});
-    	$("#previous").click(function() {
-    		oHandlerHorizontal.previous();
-    	});
-	} catch(e) {
-    	alert(e.message);
-	}
+    try {
+        var oHandlerHorizontal = $("#carouseldiv").msCarousel({boxClass:'div.set', width:907, height:302, scrollSpeed:500}).data("msCarousel");
+        $("#next").click(function() {
+            oHandlerHorizontal.next();
+        });
+        $("#previous").click(function() {
+            oHandlerHorizontal.previous();
+        });
+    } catch(e) {
+        alert(e.message);
+    }
 })
 </script>
 

@@ -39,6 +39,7 @@ Default layout, loads most of the pages
                 <action method="addItem"><type>skin_js</type><script>js/jquery.nivo.slider.pack.js</script></action>
                 <action method="addItem"><type>skin_js</type><script>js/jquery.nivo.slider.js</script></action>
                 <action method="addItem"><type>skin_js</type><script>js/jquery.msCarousel-min.js</script></action>
+                <action method="addItem"><type>skin_js</type><script>js/script.js</script></action>
 
                 <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/mscarousel.css</stylesheet></action>

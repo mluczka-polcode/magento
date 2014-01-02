@@ -35,10 +35,16 @@
         </span>
         <?php endif; ?>
 
-        <span class="arrow"><?php echo $this->getCurrentDirection() == 'desc' ? '&darr;' : '&uarr;'; ?></span>
+        <?php
+            $direction = $this->getCurrentDirection() == 'desc' ? 'asc' : 'desc';
+            $url = $this->getOrderUrl($this->getCurrentOrder(), $direction);
+        ?>
+        <span class="arrow" onclick="setLocation('<?php echo $url; ?>')">
+            <?php echo $this->getCurrentDirection() == 'desc' ? '&darr;' : '&uarr;'; ?>
+        </span>
 
     </div>
 
     <div class="clr"></div>
 </div>
-<?php endif ?>
+<?php endif; ?>
