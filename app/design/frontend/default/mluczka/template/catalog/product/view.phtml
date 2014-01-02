@@ -15,11 +15,7 @@
 
 <div id="single-left">
     <div id="thumb-left">
-        <?php foreach ($_product->getMediaGalleryImages() as $_image): ?>
-            <a href="#" onclick="popWin('<?php echo $this->getGalleryUrl($_image) ?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>">
-                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" width="64" height="63" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
-            </a>
-        <?php endforeach; ?>
+        <?php echo $this->getChildHtml('media'); ?>
     </div><!--thumb-left-->
 
     <div id="single-thumb-right">
@@ -32,165 +28,29 @@
             <p class="single-description"><?php echo $this->__('Click image to view larger picture'); ?></p>
         </div><!--single-thumb-right-foto-->
 
-        <?php
-            $relatedProducts = $_product->getRelatedProductCollection()
-                                        ->addAttributeToSelect(array('name', 'price', 'special_price', 'small_image'));
-        ?>
-        <?php if($relatedProducts->count()) : ?>
-            <div class="perfect-with">
-                <h3><?php echo $this->__('Goes perfectly with:'); ?></h3>
-
-                <?php foreach ($relatedProducts as $_related): ?>
-                    <div class="perfect-with-img">
-                        <a href="<?php echo $_related->getProductUrl(); ?>" title="<?php echo $this->htmlEscape($_related->getName()); ?>">
-                            <img alt="" src="<?php echo $this->helper('catalog/image')->init($_related, 'small_image')->resize(80, 80); ?>" />
-                        </a>
-
-                        <p class="perfect-with-desc"><?php echo $this->htmlEscape($_related->getName()); ?></p>
-
-                        <?php if($_related->getSpecialPrice()) : ?>
-                            <p class="perfect-with-price perfect-with-discount"><?php echo $_coreHelper->formatPrice($_related->getPrice()); ?></p>
-                            <p class="perfect-with-price-sale">
-                                <?php echo $this->__('Special Price:') . ' ' . $_coreHelper->formatPrice($_related->getSpecialPrice()); ?>
-                            </p>
-                        <?php else : ?>
-                            <p class="perfect-with-price"><?php echo $_coreHelper->formatPrice($_related->getPrice()); ?></p>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
-
-                <div class="clr"></div>
-            </div><!--perfect with-->
-        <?php endif; ?>
+        <?php echo $this->getChildHtml('related'); ?>
 
     </div><!--single-thumb-right-->
 
     <div class="clr"></div>
-</div>
+</div><!--single-left-->
 
 <div id="single-right">
-
     <h2><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
     <p class="single-p-desc"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
 
     <div id="single-product-information">
-        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-
-            <table>
-                <tr>
-                    <td class="product-tab">Size</td>
-                    <td class="product-select">
-                        <select>
-                            <option value="double">Double</option>
-                            <option value="single">Single</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product-tab">Warmth</td>
-                    <td class="product-select">
-                        <select>
-                            <option value="summer">Summer 4.5 tog</option>
-                            <option value="summer-2">Summer 5.0 tog</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product-tab">Quantity</td>
-                    <td class="product-number">
-                        <input type="text" id="qty" name="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" class="input-text qty" />
-                        <span class="product-availability">Availability: <?php echo $_product->getStockItem()->getQty() > 0 ? 'In stock' : 'Unavailable' ?></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product-tab">Price</td>
-                    <td class="product-price">
-                        <?php
-                            $productPrice = $_product->getSpecialPrice() ? $_product->getSpecialPrice() : $_product->getPrice();
-                            echo $_coreHelper->formatPrice($productPrice);
-                        ?>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="product-add">
-                <?php if($_product->isSaleable()): ?>
-                    <button type="submit" class="button"><?php echo $this->__('Add to Basket'); ?></button>
-                <?php endif; ?>
-
-                <span class="product-extra-menu">
-                    <?php if ($this->canEmailToFriend()): ?>
-                        <a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Tell a friend') ?></a> |
-                    <?php endif; ?>
-
-                    <?php $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product); ?>
-                    <?php if($_compareUrl) : ?>
-                        <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a> |
-                    <?php endif; ?>
-
-                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                        <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
-                    <?php endif; ?>
-                </span>
-            </div>
-
-        </form>
-
-        <div id="product-details">
-
-            <ul id="product-details-menu">
-                <li mage-tab="1" class="product-details-menu-current"><a href="#">We Say...</a></li>
-                <li mage-tab="2"><a href="#">Product Details</a></li>
-                <li mage-tab="3"><a href="#">Sizing Information</a></li>
-                <li mage-tab="4" id="product-details-menu-last"><a href="#">Delivery &amp; Returns</a></li>
-            </ul>
-
-            <div id="product-details-tab1" class="product-details-tab">
-                <?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description'); ?>
-            </div><!--product-details-tab1-->
-
-            <div id="product-details-tab2" class="product-details-tab">
-                <?php echo $_helper->productAttribute($_product, nl2br($_product->getData('product_details')), 'product_details'); ?>
-            </div><!--product-details-tab2-->
-
-            <div id="product-details-tab3" class="product-details-tab">
-                <?php echo $_helper->productAttribute($_product, nl2br($_product->getData('sizing_information')), 'sizing_information'); ?>
-            </div><!--product-details-tab3-->
-
-            <div id="product-details-tab4" class="product-details-tab">
-                <?php echo $_helper->productAttribute($_product, nl2br($_product->getData('delivery_and_returns')), 'delivery_and_returns'); ?>
-            </div><!--product-details-tab4-->
-
-            <script type="text/javascript">
-                $('.product-details-tab').hide();
-                $('#product-details-tab1').show();
-
-                $('#product-details-menu').children().click(function(){
-                    $('.product-details-menu-current').removeClass('product-details-menu-current');
-                    $(this).addClass('product-details-menu-current');
-
-                    var id = '#product-details-tab' + $(this).attr('mage-tab');
-                    $('.product-details-tab').hide();
-                    $(id).show();
-
-                    return false;
-                });
-            </script>
-
-            <div class="clr"></div>
-
-        </div><!--product details-->
-
+        <?php echo $this->getChildHtml('form'); ?>
+        <?php echo $this->getChildHtml('details'); ?>
     </div><!--single product information-->
-
-</div><!--right-->
+</div><!--single-right-->
 
 <div class="clr"></div>
 
 <div id="customers-help">
 
     <div class="customers-reviews">
-        <h3>Customers Review</h3>
+        <h3><?php echo $this->__('Customers Review'); ?></h3>
         <div class="customres-box">
             <p class="customres-box-big">
                 <?php echo $this->__('Write Your Own Review about') . ' ' . $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
@@ -206,47 +66,10 @@
             <li><a href="#"><?php echo $this->__('Which Duvet do I choose?'); ?></a></li>
             <li><a href="#"><?php echo $this->__('Continental Pillows'); ?></a></li>
         </ul>
-
     </div><!--need help-->
 
 </div><!--customer-help-->
 
 <div class="clr"></div>
 
-<div id="buy-more">
-
-    <h3>Or how about ...</h3>
-
-    <div class="buy-more-box">
-        <img alt="" src="products/by1.jpg" />
-        <p class="buy-more-title">Blue Stripe Duvet Set &amp; Pillows</p>
-        <p class="buy-more-description">Hypoallergenic &amp; Cotton Cover Medium-weight Hollowfibre</p>
-        <p class="buy-more-price products-category-price-discound">From &pound;65.00</p>
-        <p class="buy-more-special-price">Special Price: &pound;45.00</p>
-    </div>
-
-    <div class="buy-more-box">
-        <img alt="" src="products/by2.jpg" />
-        <p class="buy-more-title">Navy Blue Gingham Duvet</p>
-        <p class="buy-more-description">Hypoallergenic &amp; Cotton Cover Medium-weight Hollowfibre</p>
-        <p class="buy-more-price products-category-price-discound">From &pound;65.00</p>
-    </div>
-
-    <div class="buy-more-box">
-        <img alt="" src="products/by3.jpg" />
-        <p class="buy-more-title">Blue Stripe Duvet Set &amp; Pillows</p>
-        <p class="buy-more-description">Hypoallergenic &amp; Cotton Cover Medium-weight Hollowfibre</p>
-        <p class="buy-more-price products-category-price-discound">From &pound;65.00</p>
-        <p class="buy-more-special-price">Special Price: &pound;45.00</p>
-    </div>
-
-    <div class="buy-more-box">
-        <img alt="" src="products/by4.jpg" />
-        <p class="buy-more-title">Navy Blue Gingham Duvet</p>
-        <p class="buy-more-description">Hypoallergenic &amp; Cotton Cover Medium-weight Hollowfibre</p>
-        <p class="buy-more-price products-category-price-discound">From &pound;65.00</p>
-    </div>
-
-    <div class="clr"></div>
-
-</div><!--buy-more-->
+<?php echo $this->getChildHtml('crosssell'); ?>

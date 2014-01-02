@@ -1,0 +1,48 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<div id="product-details">
+
+    <ul id="product-details-menu">
+        <li mage-tab="1" class="product-details-menu-current"><a href="#">We Say...</a></li>
+        <li mage-tab="2"><a href="#">Product Details</a></li>
+        <li mage-tab="3"><a href="#">Sizing Information</a></li>
+        <li mage-tab="4" id="product-details-menu-last"><a href="#">Delivery &amp; Returns</a></li>
+    </ul>
+
+    <div id="product-details-tab1" class="product-details-tab">
+        <?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description'); ?>
+    </div><!--product-details-tab1-->
+
+    <div id="product-details-tab2" class="product-details-tab">
+        <?php echo $_helper->productAttribute($_product, nl2br($_product->getData('product_details')), 'product_details'); ?>
+    </div><!--product-details-tab2-->
+
+    <div id="product-details-tab3" class="product-details-tab">
+        <?php echo $_helper->productAttribute($_product, nl2br($_product->getData('sizing_information')), 'sizing_information'); ?>
+    </div><!--product-details-tab3-->
+
+    <div id="product-details-tab4" class="product-details-tab">
+        <?php echo $_helper->productAttribute($_product, nl2br($_product->getData('delivery_and_returns')), 'delivery_and_returns'); ?>
+    </div><!--product-details-tab4-->
+
+    <script type="text/javascript">
+        $('.product-details-tab').hide();
+        $('#product-details-tab1').show();
+
+        $('#product-details-menu').children().click(function(){
+            $('.product-details-menu-current').removeClass('product-details-menu-current');
+            $(this).addClass('product-details-menu-current');
+
+            var id = '#product-details-tab' + $(this).attr('mage-tab');
+            $('.product-details-tab').hide();
+            $(id).show();
+
+            return false;
+        });
+    </script>
+
+    <div class="clr"></div>
+
+</div><!--product details-->

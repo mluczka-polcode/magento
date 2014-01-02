@@ -191,6 +191,11 @@ Product view
                 <action method="addReviewSummaryTemplate"><type>...</type><template>...</template></action>
                 -->
                 <block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/media.phtml"/>
+                <block type="catalog/product_view" name="catalog.product.related" as="related" template="catalog/product/view/related.phtml"/>
+                <block type="catalog/product_view" name="product.info.details" as="details" template="catalog/product/view/details.phtml"/>
+                <block type="catalog/product_view" name="product.info.crosssell" as="crosssell" template="catalog/product/view/crosssell.phtml"/>
+                <block type="catalog/product_view" name="product.info.form" as="form" template="catalog/product/view/form.phtml"/>
+
                 <block type="core/text_list" name="alert.urls" as="alert_urls" translate="label">
                     <label>Alert Urls</label>
                 </block>

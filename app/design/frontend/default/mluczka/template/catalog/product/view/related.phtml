@@ -1,0 +1,33 @@
+<?php
+    $_coreHelper = $this->helper('core');
+    $_product = $this->getProduct();
+
+    $relatedProducts = $_product->getRelatedProductCollection()
+                                ->addAttributeToSelect(array('name', 'price', 'special_price', 'small_image'));
+?>
+<?php if($relatedProducts->count()) : ?>
+    <div class="perfect-with">
+        <h3><?php echo $this->__('Goes perfectly with:'); ?></h3>
+
+        <?php foreach ($relatedProducts as $_related): ?>
+            <div class="perfect-with-img">
+                <a href="<?php echo $_related->getProductUrl(); ?>" title="<?php echo $this->htmlEscape($_related->getName()); ?>">
+                    <img alt="" src="<?php echo $this->helper('catalog/image')->init($_related, 'small_image')->resize(80, 80); ?>" />
+                </a>
+
+                <p class="perfect-with-desc"><?php echo $this->htmlEscape($_related->getName()); ?></p>
+
+                <?php if($_related->getSpecialPrice()) : ?>
+                    <p class="perfect-with-price perfect-with-discount"><?php echo $_coreHelper->formatPrice($_related->getPrice()); ?></p>
+                    <p class="perfect-with-price-sale">
+                        <?php echo $this->__('Special Price:') . ' ' . $_coreHelper->formatPrice($_related->getSpecialPrice()); ?>
+                    </p>
+                <?php else : ?>
+                    <p class="perfect-with-price"><?php echo $_coreHelper->formatPrice($_related->getPrice()); ?></p>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+
+        <div class="clr"></div>
+    </div><!--perfect with-->
+<?php endif; ?>
