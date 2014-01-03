@@ -25,15 +25,13 @@
 
 <div id="comecial-description">
     <div id="comecial-description-left">
-        <h3>Wchich Duvet?</h3>
-        <p>Lorem ipsum delor et consecticit nonummy et salal.</p>
-        <a href="#">Find out more ›</a>
+        <h3><?php echo $_category->getData('left_title'); ?></h3>
+        <p><?php echo nl2br($_category->getData('left_content')); ?></p>
     </div><!--comecial-description-left-->
 
     <div id="comecial-description-right">
-        <h3>Wchich is Best?</h3>
-        <p>Lorem ipsum delor et consecticit nonummy et salal.</p>
-        <a href="#">Find out more ›</a>
+        <h3><?php echo $_category->getData('right_title'); ?></h3>
+        <p><?php echo nl2br($_category->getData('right_content')); ?></p>
     </div><!--comecial-description-right-->
 
     <div class="clr"></div>
@@ -50,7 +48,7 @@
     <?php echo $this->getProductListHtml() ?>
 <?php endif; ?>
 
-<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+<?php if($_description = $_category->getDescription()): ?>
     <div id="products-category-bottom-description">
         <p><?php echo nl2br($_helper->categoryAttribute($_category, $_description, 'description')); ?></p>
     </div>

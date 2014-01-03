@@ -7,6 +7,12 @@
     {
         $_parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
         $attributes = $_parentProduct->getTypeInstance(true)->getConfigurableAttributesAsArray($_parentProduct);
+
+//         $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_parentProduct);
+//         foreach($childProducts as $child)
+//         {
+//             echo $child->getName().'<br />';
+//         }
     }
 ?>
 <?php if($attributes) : ?>
