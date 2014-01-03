@@ -5,13 +5,13 @@
 ?>
 
 <script type="text/javascript">
-$(document).ready(function() {
+jQuery(document).ready(function() {
     try {
-        var oHandlerHorizontal = $("#carouseldiv").msCarousel({boxClass:'div.set', width:907, height:302, scrollSpeed:500}).data("msCarousel");
-        $("#next").click(function() {
+        var oHandlerHorizontal = jQuery("#carouseldiv").msCarousel({boxClass:'div.set', width:907, height:302, scrollSpeed:500}).data("msCarousel");
+        jQuery("#next").click(function() {
             oHandlerHorizontal.next();
         });
-        $("#previous").click(function() {
+        jQuery("#previous").click(function() {
             oHandlerHorizontal.previous();
         });
     } catch(e) {

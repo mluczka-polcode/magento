@@ -1,3 +1,5 @@
+jQuery.noConflict();
+
 function setLocation(url)
 {
     location.href = url;
@@ -5,17 +7,17 @@ function setLocation(url)
 
 function initDetailsTabs()
 {
-    $('.product-details-tab').hide();
-    $('#product-details-tab0').show();
-    $('#product-details-button0').addClass('product-details-menu-current');
+    jQuery('.product-details-tab').hide();
+    jQuery('#product-details-tab0').show();
+    jQuery('#product-details-button0').addClass('product-details-menu-current');
 
-    $('#product-details-menu').children().click(function(){
-        $('.product-details-menu-current').removeClass('product-details-menu-current');
-        $(this).addClass('product-details-menu-current');
+    jQuery('#product-details-menu').children().click(function(){
+        jQuery('.product-details-menu-current').removeClass('product-details-menu-current');
+        jQuery(this).addClass('product-details-menu-current');
 
-        var id = '#product-details-tab' + $(this).attr('mage-tab');
-        $('.product-details-tab').hide();
-        $(id).show();
+        var id = '#product-details-tab' + jQuery(this).attr('mage-tab');
+        jQuery('.product-details-tab').hide();
+        jQuery(id).show();
 
         return false;
     });
