@@ -1,36 +1,26 @@
 <?php
-    $_product = $this->getProduct();
+    $attributes = array();
 
+    $_product = $this->getProduct();
     $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
     if($parentIds)
     {
         $_parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-
-        $attributeOptions = array();
-        $productAttributeOptions = $_parentProduct->getTypeInstance(true)->getConfigurableAttributesAsArray($_parentProduct);
-        foreach ($productAttributeOptions as $productAttribute)
-        {
-            foreach ($productAttribute['values'] as $attribute)
-            {
-                $attributeOptions[$productAttribute['label']][$attribute['value_index']] = $attribute['store_label'];
-            }
-        }
+        $attributes = $_parentProduct->getTypeInstance(true)->getConfigurableAttributesAsArray($_parentProduct);
     }
 ?>
-<?php if($attributeOptions) : ?>
-    <?php foreach($attributeOptions as $key => $values) : ?>
+<?php if($attributes) : ?>
+    <?php foreach($attributes as $item) : ?>
         <tr>
-            <td class="product-tab"><?php echo $key; ?></td>
+            <td class="product-tab"><?php echo $item['label']; ?></td>
             <td class="product-select">
-                <?php
-                    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', $key);
-                    $currentValue = $_product->getData(strtolower($key));
-                ?>
-                <select>
-                    <?php foreach($values as $value => $label) : ?>
-                        <?php //$_product = Mage::getModel('catalog/product')->loadByAttribute($key, $value); ?>
-                        <?php $selected = $value == $currentValue ? 'selected="selected"' : ''; ?>
-                        <option value="<?php echo $value; ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                <?php $currentValue = $_product->getData($item['attribute_code']); ?>
+                <select name="<?php echo $item['attribute_code']; ?>">
+                    <?php foreach($item['values'] as $value) : ?>
+                        <?php $selected = ( $value['value_index'] == $currentValue ? 'selected="selected"' : '' ); ?>
+                        <option value="<?php echo $value['value_index']; ?>" <?php echo $selected; ?>>
+                            <?php echo $value['store_label']; ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </td>
