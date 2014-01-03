@@ -9,45 +9,20 @@
         </div><!--bottom-column-left-->
 
         <div class="bottom-column-right column-two">
-            <h4>Customer Service</h4>
-            <ul>
-                <li><a href="#">Ordering Information</a></li>
-                <li><a href="#">Our No Quibble Guarante</a></li>
-                <li><a href="#">Delivery Information</a></li>
-                <li><a href="#">Cancellations, Returns &amp; Exchange</a></li>
-            </ul>
+            <?php echo $this->getChildHtml('my_footer_block_left'); ?>
         </div><!--bottom-column-right-->
 
         <div class="clr"></div>
 
-        <div id="payment"><img alt="" src="<?php echo $this->getSkinUrl(); ?>images/payment.jpg" /></div><!--payment-->
+        <div id="payment">
+            <img alt="" src="<?php echo $this->getSkinUrl(); ?>images/payment.jpg" />
+        </div><!--payment-->
 
     </div><!--bottom left-->
 
     <div id="bottom-right">
-
-        <div class="bottom-column-left column-three">
-            <h4>Help Guides</h4>
-            <ul>
-                <li><a href="#">Which Duvet?</a></li>
-                <li><a href="#">Which Pillow?</a></li>
-                <li><a href="#">Which Mattress Toppper?</a></li>
-                <li><a href="#">Which Mattress Protector?</a></li>
-                <li><a href="#">Duvet Reviews</a></li>
-                <li><a href="#">Pillow Reviews</a></li>
-                <li><a href="#">Mattress Toppper Reviews</a></li>
-                <li><a href="#">Mattress Protector Reviews</a></li>
-                <li><a href="#">Bedding Glossary</a></li>
-            </ul>
-        </div><!--bottom-column-left-->
-
-        <div class="bottom-column-right column-four">
-            <h4>About Our Site</h4>
-            <?php echo $this->getChildHtml('footer_links'); ?>
-        </div><!--bottom-column-right-->
-
+        <?php echo $this->getChildHtml('my_footer_block_right'); ?>
         <div class="clr"></div>
-
     </div><!--bottom right-->
 
     <div class="clr"></div>

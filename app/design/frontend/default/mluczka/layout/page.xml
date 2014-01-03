@@ -44,8 +44,6 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/mscarousel.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/nivo-slider.css</stylesheet></action>
-                <action method="addCss"><stylesheet>css/cat-style.css</stylesheet></action>
-                <action method="addCss"><stylesheet>css/single-style.css</stylesheet></action>
             </block>
 
             <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
@@ -92,6 +90,12 @@ Default layout, loads most of the pages
                 </block>
                 <block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml"/>
                 <block type="newsletter/subscribe" name="newsletter" template="newsletter/subscribe.phtml"/>
+                <block type="cms/block" name="my_footer_block_left">
+                    <action method="setBlockId"><block_id>footer_links_left</block_id></action>
+                </block>
+                <block type="cms/block" name="my_footer_block_right">
+                    <action method="setBlockId"><block_id>footer_links</block_id></action>
+                </block>
             </block>
 
             <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">

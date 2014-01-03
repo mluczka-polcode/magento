@@ -68,6 +68,9 @@ Category default layout
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/cat-style.css</stylesheet></action>
+        </reference>
         <reference name="left">
             <block type="catalog/layer_view" name="catalog.leftnav" template="catalog/layer/view.phtml"/>
             <block type="reports/product_viewed" template="reports/product_viewed.phtml" />
@@ -176,6 +179,9 @@ Product view
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
+            <action method="addCss"><stylesheet>css/cat-style.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/single-style.css</stylesheet></action>
+
             <action method="addJs"><script>varien/product.js</script></action>
             <action method="addJs"><script>varien/configurable.js</script></action>
 
