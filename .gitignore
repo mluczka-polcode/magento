@@ -19,7 +19,7 @@ app/design/frontend/default/*
 app/etc/*
 !app/etc/modules/
 app/etc/modules/*
-!app/etc/modules/Mage_CustomCatAttr.xml
+!app/etc/modules/custom/
 
 !skin/
 skin/*

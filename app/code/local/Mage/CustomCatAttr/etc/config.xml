@@ -9,7 +9,7 @@
       <resources>
           <customcatattr_setup>
             <setup>
-              <module>Mage_CustomCatAttr</module>
+              <module>custom/Mage_CustomCatAttr</module>
               <class>Mage_Eav_Model_Entity_Setup</class>
             </setup>
             <connection>
