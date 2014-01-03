@@ -15,6 +15,12 @@ app/design/frontend/*
 app/design/frontend/default/*
 !app/design/frontend/default/mluczka/
 
+!app/etc/
+app/etc/*
+!app/etc/modules/
+app/etc/modules/*
+!app/etc/modules/Mage_CustomCatAttr.xml
+
 !skin/
 skin/*
 !skin/frontend/
