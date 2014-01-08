@@ -1,19 +1,13 @@
 <?php
-    $attributes = array();
-
+/**
+ * Partial template of product form - configurable products attributes
+ *
+ * @see Mage_Catalog_Block_Product_Attributes
+ */
+?>
+<?php
     $_product = $this->getProduct();
-    $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
-    if($parentIds)
-    {
-        $_parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-        $attributes = $_parentProduct->getTypeInstance(true)->getConfigurableAttributesAsArray($_parentProduct);
-
-//         $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_parentProduct);
-//         foreach($childProducts as $child)
-//         {
-//             echo $child->getName().'<br />';
-//         }
-    }
+    $attributes = $this->getConfigurableAttributes();
 ?>
 <?php if($attributes) : ?>
     <?php foreach($attributes as $item) : ?>

@@ -1,7 +1,7 @@
 <?php
     $_coreHelper = $this->helper('core');
     $_products = $this->getProductCollection();
-    if ($_products && $_products->getSize()):
+    if ($_products && $_products->getSize()) :
 ?>
 
 <script type="text/javascript">
@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
 
 <div id="box-slide-offer">
 
-    <h2 class="box-title">Our Bestsellers</h2>
+    <h2 class="box-title"><?php echo $this->__('Our Bestsellers'); ?></h2>
 
     <div class="previous-btn">
         <button name="previous" id="previous" type="button"><img alt="" src="<?php echo $this->getSkinUrl(); ?>images/prev-btn.jpg" /></button>
@@ -42,10 +42,10 @@ jQuery(document).ready(function() {
                 <p class="box-slide-description"><?php echo $_product->getShortDescription(); ?></p>
 
                 <?php if($_product->getSpecialPrice()) : ?>
-                    <p class="box-slide-price box-slide-price-discound">From <?php echo $_coreHelper->formatPrice($_product->getPrice()); ?></p>
-                    <p class="box-slide-special-price">Special Price: <?php echo $_coreHelper->formatPrice($_product->getSpecialPrice()); ?></p>
+                    <p class="box-slide-price box-slide-price-discound"><?php echo $this->__('From') . ' ' . $_coreHelper->formatPrice($_product->getPrice()); ?></p>
+                    <p class="box-slide-special-price"><?php echo $this->__('Special Price:') . ' ' . $_coreHelper->formatPrice($_product->getSpecialPrice()); ?></p>
                 <?php else : ?>
-                    <p class="box-slide-price">From <?php echo $_coreHelper->formatPrice($_product->getPrice()); ?></p>
+                    <p class="box-slide-price"><?php echo $this->__('From') . ' ' . $_coreHelper->formatPrice($_product->getPrice()); ?></p>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
@@ -55,6 +55,4 @@ jQuery(document).ready(function() {
 
 </div><!-- box-slide-offer -->
 
-<?php else: ?>
-<p>no bestsellers found</p>
 <?php endif; ?>
