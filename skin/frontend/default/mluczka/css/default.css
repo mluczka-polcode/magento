@@ -848,20 +848,19 @@ tr.summary-details-excluded { font-style:italic; }
 .product-view .box-tags .note { margin:3px 0 0; padding:0 0 0 23px; font-size:11px; }
 
 /* Block: Reviews */
-.product-view .box-reviews dl { margin:15px 0; }
-.product-view .box-reviews dt a,
-.product-view .box-reviews dt span { font-weight:bold; }
-.product-view .box-reviews dd { margin:0 0 15px; }
-.product-view .box-reviews dd small { font-style:italic; }
-.product-view .box-reviews .form-add { margin:15px 0 0; }
-.product-view .box-reviews .form-add h3 { font-size:13px; font-weight:normal; }
-.product-view .box-reviews .form-add h3 span { font-weight:bold; }
-.product-view .box-reviews .form-add h4 { font-size:12px; }
-.product-view .box-reviews .form-add .data-table td { text-align:center; }
-.product-view .box-reviews .form-add .form-list { margin:15px 0 0; }
-.product-view .box-reviews .form-add .form-list .input-box { width:360px; }
-.product-view .box-reviews .form-add .form-list input.input-text,
-.product-view .box-reviews .form-add .form-list textarea { width:354px; }
+.customers-reviews .box-reviews dt a,
+.customers-reviews .box-reviews dt span { font-weight:bold; }
+.customers-reviews .box-reviews dd { margin:0 0 15px; }
+.customers-reviews .box-reviews dd small { font-style:italic; }
+.customers-reviews .box-reviews .form-add { margin:15px 0 0; }
+.customers-reviews .box-reviews .form-add h3 { font-size:13px; font-weight:normal; }
+.customers-reviews .box-reviews .form-add h3 span { font-weight:bold; }
+.customers-reviews .box-reviews .form-add h4 { font-size:12px; }
+.customers-reviews .box-reviews .form-add .data-table td { text-align:center; }
+.customers-reviews .box-reviews .form-add .form-list { margin:15px 0 0; }
+.customers-reviews .box-reviews .form-add .form-list .input-box { width:360px; }
+.customers-reviews .box-reviews .form-add .form-list input.input-text,
+.customers-reviews .box-reviews .form-add .form-list textarea { width:354px; }
 
 /* Send a Friend */
 .send-friend .form-list { width:615px; overflow:hidden; }

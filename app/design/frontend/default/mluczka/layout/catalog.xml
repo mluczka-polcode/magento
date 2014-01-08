@@ -199,7 +199,10 @@ Product view
                 <block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/media.phtml"/>
                 <block type="catalog/product_view" name="catalog.product.related" as="related" template="catalog/product/view/related.phtml"/>
                 <block type="catalog/product_view" name="product.info.details" as="details" template="catalog/product/view/details.phtml"/>
-                <block type="catalog/product_view" name="product.info.customers-review" as="customers-review" template="catalog/product/view/customers-review.phtml"/>
+                <block type="catalog/product_view" name="product.info.customers-review" as="customers-review" template="catalog/product/view/customers-review.phtml">
+                    <block type="review/form" name="product.review.form" as="review_form"/>
+                    <block type="review/product_view_list" name="product.info.product_additional_data" as="review_list" template="review/product/view/list.phtml"/>
+                </block>
                 <block type="catalog/product_view" name="product.info.crosssell" as="crosssell" template="catalog/product/view/crosssell.phtml"/>
                 <block type="catalog/product_view" name="product.info.form" as="form" template="catalog/product/view/form.phtml">
                     <block type="catalog/product_attributes" name="product.info.attributes" as="attributes" template="catalog/product/view/attributes.phtml"/>

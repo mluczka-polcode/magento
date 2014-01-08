@@ -12,6 +12,9 @@ body {
 ul, ol {
     list-style: none;
 }
+fieldset {
+    border: none;
+}
 .clr {
     clear: both;
     height: 1px;
@@ -244,15 +247,25 @@ ul#nav a:hover, a#active {
     margin: 1px 0 2px 0;
 }
 /* - ... - */
+#left {
+    float: left;
+    width: 274px;
+}
+#right {
+    float: right;
+    width: 690px;
+}
 .col-main {
     padding: 0 20px;
 }
+/*
 .page-title {
     margin: 20px;
 }
-.col-main .page-title {
+.col-main > .page-title {
     margin: 20px 0;
 }
+*/
 .new-users, .registered-users {
     float: left;
     width: 50%;
@@ -397,22 +410,6 @@ h2.legend {
 }
 #payment {
     margin: 47px 0 0 0;
-}
-/* - site messages - */
-#site-messages {
-    padding: 20px 0;
-}
-ul.messages {
-    padding: 20px;
-    font-size: 15px;
-    font-weight: bold;
-    background: #EE0;
-}
-ul.messages li {
-    list-style: none;
-}
-ul.messages li.error-msg {
-    color: #F00;
 }
 /* - footer - */
 #footer {

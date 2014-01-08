@@ -7,10 +7,16 @@
     <div class="customers-reviews">
         <h3><?php echo $this->__('Customers Review'); ?></h3>
         <div class="customres-box">
-            <p class="customres-box-big">
-                <?php echo $this->__('Write Your Own Review about') . ' ' . $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
-            </p>
-            <p class="customres-box-small"><?php echo $this->__('Only registered users can write reviews. Please log in or register'); ?></p>
+            <?php echo $this->getChildHtml('review_list'); ?>
+            <br />
+            <?php if($this->helper('customer')->isLoggedIn()) : ?>
+                <?php echo $this->getChildHtml('review_form'); ?>
+            <?php else : ?>
+                <p class="customres-box-big">
+                    <?php echo $this->__('Write Your Own Review about') . ' ' . $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                </p>
+                <p class="customres-box-small"><?php echo $this->__('Only registered users can write reviews. Please log in or register'); ?></p>
+            <?php endif; ?>
         </div>
     </div><!--customers review-->
 

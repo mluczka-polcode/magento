@@ -98,7 +98,7 @@
     padding: 25px;
     color: #999;
     border: 1px solid #ccc;
-    height: 96px;
+    min-height: 96px;
 }
 .need-help {
     float: right;
