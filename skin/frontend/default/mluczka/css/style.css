@@ -9,6 +9,9 @@ body {
     font-size: 11px;
     color: #333;
 }
+ul, ol {
+    list-style: none;
+}
 .clr {
     clear: both;
     height: 1px;
@@ -23,7 +26,6 @@ body {
 /* - text - */
 h1 {
     font-size: 24px;
-    height: 58px;
 }
 h2 {
     font-size: 18px;
@@ -43,21 +45,15 @@ a:hover {
     color: #a9092c;
 }
 img {
+    vertical-align: top;
     border: none;
-}
-#newsletter-delivery h3 {
-    font-size: 16px;
-    margin: 0 0 4px 0;
-}
-#delivery h3 {
-    text-transform: uppercase;
-    margin: 1px 0;
-}
-#delivery p {
-    margin: 0;
 }
 button {
     cursor: pointer;
+}
+input[type=text], input[type=password] {
+    padding: 1px 1px 1px 4px;
+    border: 1px solid #7f7f7f;
 }
 input:focus, select:focus {
     outline: none;
@@ -70,6 +66,7 @@ input:focus, select:focus {
 .logo {
     float: left;
     width: 300px;
+    height: 58px;
     margin: 0 0 0 9px;
 }
 .quick-access {
@@ -79,26 +76,26 @@ input:focus, select:focus {
     margin: 0 10px 0 0;
 }
 /* - links - */
-ul.links {
+.quick-access ul.links {
     margin: 5px 0 0 0;
     padding: 0;
     float: left;
     list-style: none;
 }
-ul.links li {
+.quick-access ul.links li {
     float: left;
     padding: 0 12px;
     line-height: 11px;
     border-right: 1px solid #999;
 }
-ul.links a {
+.quick-access ul.links a {
     color: #666;
     text-decoration: none;
 }
-ul.links a:hover {
+.quick-access ul.links a:hover {
     color: #a9092c;
 }
-ul.links li.last {
+.quick-access ul.links li.last {
     border-right: none;
     padding: 0 0 0 12px;
 }
@@ -184,7 +181,6 @@ ul#nav a:hover, a#active {
 }
 .box-3-offer-column {
     float: left;
-/**/
     height: 161px;
     width: 320px;
     background: #ebebeb;
@@ -247,6 +243,52 @@ ul#nav a:hover, a#active {
     color: #a80d2c;
     margin: 1px 0 2px 0;
 }
+/* - ... - */
+.col-main {
+    padding: 0 20px;
+}
+.page-title {
+    margin: 20px;
+}
+.col-main .page-title {
+    margin: 20px 0;
+}
+.new-users, .registered-users {
+    float: left;
+    width: 50%;
+}
+.new-users > div, .registered-users > div {
+    padding: 20px;
+}
+.new-users > div {
+    padding-left: 0;
+}
+.registered-users > div {
+    padding-right: 0;
+}
+/* - forms - */
+ul.form-list {
+    margin-top: 10px;
+}
+.form-list li {
+    margin-bottom: 10px;
+}
+.form-list label em {
+    padding-right: 3px;
+    font-weight: bold;
+    color: #F00;
+}
+.form-list div.field {
+    margin-bottom: 5px;
+}
+h2.legend {
+    margin-bottom: 5px;
+}
+.buttons-set p.required, .buttons-set p.back-link {
+    float: left;
+    clear: left;
+    width: 110px;
+}
 /* - newsletter delivery - */
 #newsletter-delivery {
     clear: both;
@@ -254,6 +296,10 @@ ul#nav a:hover, a#active {
     padding: 11px 17px 10px 17px;
     height: 54px;
     background: #fff url(../images/bg-newsletter-delivery.jpg) top left no-repeat;
+}
+#newsletter-delivery h3 {
+    font-size: 16px;
+    margin: 0 0 4px 0;
 }
 #newsletter {
     float: left;
@@ -288,6 +334,13 @@ ul#nav a:hover, a#active {
 #delivery {
     float: right;
     width: 419px;
+}
+#delivery h3 {
+    text-transform: uppercase;
+    margin: 1px 0;
+}
+#delivery p {
+    margin: 0;
 }
 /* - bottom-links -*/
 #bottom-links {

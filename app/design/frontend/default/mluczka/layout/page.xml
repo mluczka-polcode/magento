@@ -55,6 +55,7 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>mage/translate.js</script></action>
                 <action method="addJs"><script>mage/cookies.js</script></action>
 
+                <action method="addCss"><stylesheet>css/default.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/mscarousel.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/nivo-slider.css</stylesheet></action>

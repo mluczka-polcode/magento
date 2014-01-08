@@ -2,6 +2,23 @@
 /**
  * Template for Mage_Page_Block_Html
  */
+
+    function isHomeOrCatalog()
+    {
+        if(Mage::getBlockSingleton('page/html_header')->getIsHomePage())
+        {
+            return true;
+        }
+
+        $routeName = Mage::app()->getRequest()->getRouteName();
+        if($routeName == 'catalog' && Mage::registry('current_category'))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
@@ -17,7 +34,7 @@
         <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="main-container col2-right-layout">
             <div class="main">
-                <div class="col-main">
+                <div class="<?php echo isHomeOrCatalog() ? '' : 'col-main'; ?>">
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
             </div>
