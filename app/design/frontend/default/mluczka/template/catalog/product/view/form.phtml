@@ -2,7 +2,7 @@
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 
     <table>
-        <?php echo $this->getChildHtml('attributes'); ?>
+        <?php echo $this->getChildHtml('options_configurable'); ?>
         <tr>
             <td class="product-tab"><?php echo $this->__('Quantity'); ?></td>
             <td class="product-number">
@@ -12,7 +12,7 @@
         </tr>
         <tr>
             <td class="product-tab"><?php echo $this->__('Price'); ?></td>
-            <td class="product-price">
+            <td class="product-price" id="product-price-<?php echo $_product->getId(); ?>">
                 <?php
                     $productPrice = $_product->getSpecialPrice() ? $_product->getSpecialPrice() : $_product->getPrice();
                     echo $this->helper('core')->formatPrice($productPrice);

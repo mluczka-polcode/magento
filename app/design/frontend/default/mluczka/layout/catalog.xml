@@ -201,6 +201,7 @@ Product view
                 <block type="catalog/product_view" name="product.info.crosssell" as="crosssell" template="catalog/product/view/crosssell.phtml"/>
                 <block type="catalog/product_view" name="product.info.form" as="form" template="catalog/product/view/form.phtml">
                     <block type="catalog/product_attributes" name="product.info.attributes" as="attributes" template="catalog/product/view/attributes.phtml"/>
+                    <block type="catalog/product_view_type_configurable" name="product.info.options.configurable" as="options_configurable" template="catalog/product/view/type/options/configurable.phtml"/>
                     <block type="catalog/product_view" name="product.info.extra" as="extra" template="catalog/product/view/extra.phtml"/>
                 </block>
 

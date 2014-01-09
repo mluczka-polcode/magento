@@ -1,0 +1,25 @@
+<?php
+    $_product    = $this->getProduct();
+    $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+//     $_tierPrices = $this->getTierPrices($_product, $this->getParent());
+?>
+<pre><?php print_r($_tierPrices); ?></pre>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <?php foreach($_attributes as $_attribute): ?>
+        <tr>
+            <td class="product-tab"><?php echo $_attribute->getLabel() ?></td>
+            <td class="product-select">
+                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                    <option><?php echo $this->__('Choose an Option...') ?></option>
+                </select>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <script type="text/javascript">
+        var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+        optionsPrice.priceFormat = <?php echo json_encode(Mage::app()->getLocale()->getJsPriceFormat()); ?>;
+        optionsPrice.tierPrices = [];
+
+        var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+    </script>
+<?php endif;?>
