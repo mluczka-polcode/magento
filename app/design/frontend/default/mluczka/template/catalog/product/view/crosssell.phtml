@@ -14,19 +14,23 @@
                 <a href="<?php echo $_item->getProductUrl(); ?>">
                     <img src="<?php echo $this->helper('catalog/image')->init($_item, 'image')->resize(160, 160); ?>" alt="" />
                 </a>
+
                 <p class="buy-more-title">
                     <a href="<?php echo $_item->getProductUrl(); ?>"><?php echo $this->htmlEscape($_item->getName()); ?></a>
                 </p>
+
                 <p class="buy-more-description">
                     <?php echo $_helper->productAttribute($_item, nl2br($_item->getDescription()), 'description'); ?>
                 </p>
+
+                <?php $productPrice = $_coreHelper->formatPrice($_item->getPrice()); ?>
                 <?php if($_item->getSpecialPrice()) : ?>
-                    <p class="buy-more-price products-category-price-discound"><?php echo $_coreHelper->formatPrice($_item->getPrice()); ?></p>
+                    <p class="buy-more-price products-category-price-discound"><?php echo $productPrice; ?></p>
                     <p class="buy-more-special-price">
-                        <?php echo $this->__('Special Price:') . ' ' . $_coreHelper->formatPrice($_item->getSpecialPrice()); ?>
+                        <?php echo $this->__('Special Price: %s', $_coreHelper->formatPrice($_item->getSpecialPrice())); ?>
                     </p>
                 <?php else : ?>
-                    <p class="buy-more-price"><?php echo $_coreHelper->formatPrice($_item->getPrice()); ?></p>
+                    <p class="buy-more-price"><?php echo $productPrice; ?></p>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

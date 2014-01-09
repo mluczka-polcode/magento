@@ -7,6 +7,7 @@
             <dt>
                 <h4><?php echo $this->escapeHtml($_review->getTitle()) ?></h4>
                 <?php echo $this->__('Review by <span>%s</span>', $this->escapeHtml($_review->getNickname())) ?>
+                <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
             </dt>
             <dd>
                 <?php $_votes = $_review->getRatingVotes(); ?>
@@ -29,7 +30,6 @@
                 </table>
                 <?php endif; ?>
                 <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
-                <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
             </dd>
         <?php endforeach; ?>
         </dl>

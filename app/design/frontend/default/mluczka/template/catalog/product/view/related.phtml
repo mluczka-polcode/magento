@@ -17,13 +17,14 @@
 
                 <p class="perfect-with-desc"><?php echo $this->htmlEscape($_related->getName()); ?></p>
 
+                <?php $productPrice = $_coreHelper->formatPrice($_related->getPrice()); ?>
                 <?php if($_related->getSpecialPrice()) : ?>
-                    <p class="perfect-with-price perfect-with-discount"><?php echo $_coreHelper->formatPrice($_related->getPrice()); ?></p>
+                    <p class="perfect-with-price perfect-with-discount"><?php echo $productPrice; ?></p>
                     <p class="perfect-with-price-sale">
-                        <?php echo $this->__('Special Price:') . ' ' . $_coreHelper->formatPrice($_related->getSpecialPrice()); ?>
+                        <?php echo $this->__('Special Price: %s', $_coreHelper->formatPrice($_related->getSpecialPrice())); ?>
                     </p>
                 <?php else : ?>
-                    <p class="perfect-with-price"><?php echo $_coreHelper->formatPrice($_related->getPrice()); ?></p>
+                    <p class="perfect-with-price"><?php echo $productPrice; ?></p>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

@@ -41,11 +41,12 @@ jQuery(document).ready(function() {
                 <h3 class="slider-product-title"><?php echo $this->htmlEscape($_product->getName()) ?></h3>
                 <p class="box-slide-description"><?php echo $_product->getShortDescription(); ?></p>
 
+                <?php $productPrice = $_coreHelper->formatPrice($_product->getPrice()); ?>
                 <?php if($_product->getSpecialPrice()) : ?>
-                    <p class="box-slide-price box-slide-price-discound"><?php echo $this->__('From') . ' ' . $_coreHelper->formatPrice($_product->getPrice()); ?></p>
-                    <p class="box-slide-special-price"><?php echo $this->__('Special Price:') . ' ' . $_coreHelper->formatPrice($_product->getSpecialPrice()); ?></p>
+                    <p class="box-slide-price box-slide-price-discound"><?php echo $this->__('From %s', $productPrice); ?></p>
+                    <p class="box-slide-special-price"><?php echo $this->__('Special Price: %s', $_coreHelper->formatPrice($_product->getSpecialPrice())); ?></p>
                 <?php else : ?>
-                    <p class="box-slide-price"><?php echo $this->__('From') . ' ' . $_coreHelper->formatPrice($_product->getPrice()); ?></p>
+                    <p class="box-slide-price"><?php echo $this->__('From %s', $productPrice); ?></p>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

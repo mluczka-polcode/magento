@@ -318,9 +318,7 @@ tr.summary-details-excluded { font-style:italic; }
 .links li.last { background:none !important; padding-right:0 !important; }
 
 .link-cart { color:#dc6809 !important; font-weight:bold; }
-.link-wishlist { color:#dc6809 !important; font-weight:bold; }
 .link-reorder { font-weight:bold; color:#dc6809 !important; }
-.link-compare { font-weight:bold; }
 .link-print { font-weight:bold; color:#dc6809; }
 .link-rss { padding-left:18px; line-height:14px; white-space:nowrap; }
 .btn-remove, .btn-previous, .btn-edit, .btn-remove2 {
