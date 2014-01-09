@@ -1,0 +1,10 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+
+<h2 class="reviews-title"><?php echo $this->__('Customers\' reviews for %s', $_helper->productAttribute($_product, $_product->getName(), 'name')); ?></h2>
+
+<div class="clr"></div>
+
+<?php echo $this->getChildHtml('product_additional_data'); ?>

@@ -168,6 +168,11 @@ ul#nav a {
 ul#nav a:hover, a#active {
     background: #a9092c;
 }
+/* - breadcrumbs - */
+#breadcrumbs {
+    color: #7f7f7f;
+    margin: 13px 0 0 14px;
+}
 /* - baner - */
 #baner {
     width: 976px;
@@ -257,6 +262,9 @@ ul#nav a:hover, a#active {
 }
 .col-main {
     padding: 0 20px;
+}
+.reviews-title {
+    margin: 20px 0 10px 0;
 }
 /*
 .page-title {

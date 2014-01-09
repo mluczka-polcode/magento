@@ -127,6 +127,12 @@
     text-decoration: none;
     color: #a9092c;
 }
+#customer-reviews dt {
+    margin-bottom: 5px;
+}
+#customer-reviews dd {
+    margin-bottom: 10px;
+}
 /* - buy more - */
 #buy-more {
     margin: 40px 0 0 14px;
