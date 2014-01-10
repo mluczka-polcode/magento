@@ -23,10 +23,12 @@
     <div id="single-thumb-right">
 
         <div id="single-thumb-right-foto">
+            <a href="<?php echo $_product->getImageUrl(); ?>" target="_blank">
             <?php
                 $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(265).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
                 echo $_helper->productAttribute($_product, $_img, 'image');
             ?>
+            </a>
             <p class="single-description"><?php echo $this->__('Click image to view larger picture'); ?></p>
         </div><!--single-thumb-right-foto-->
 
