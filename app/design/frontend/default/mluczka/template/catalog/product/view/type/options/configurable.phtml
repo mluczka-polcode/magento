@@ -1,6 +1,14 @@
 <?php
-    $_product    = $this->getProduct();
-    $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+    $_product = $this->getProduct();
+
+    if($_product->getTypeId() == 'configurable')
+    {
+        $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+    }
+    else
+    {
+        $_attributes = array();
+    }
 ?>
 <pre><?php print_r($_tierPrices); ?></pre>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
@@ -14,6 +22,7 @@
             </td>
         </tr>
     <?php endforeach; ?>
+
     <script type="text/javascript">
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
     </script>
