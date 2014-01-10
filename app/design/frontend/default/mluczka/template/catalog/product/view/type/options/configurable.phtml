@@ -1,7 +1,6 @@
 <?php
     $_product    = $this->getProduct();
     $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
-//     $_tierPrices = $this->getTierPrices($_product, $this->getParent());
 ?>
 <pre><?php print_r($_tierPrices); ?></pre>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
@@ -16,10 +15,6 @@
         </tr>
     <?php endforeach; ?>
     <script type="text/javascript">
-        var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
-        optionsPrice.priceFormat = <?php echo json_encode(Mage::app()->getLocale()->getJsPriceFormat()); ?>;
-        optionsPrice.tierPrices = [];
-
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
     </script>
 <?php endif;?>
